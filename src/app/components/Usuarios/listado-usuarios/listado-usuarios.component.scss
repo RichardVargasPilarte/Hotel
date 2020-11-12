@@ -1,0 +1,19 @@
+/* Margen de espacio entre el toolbar y
+    el boton de nuevo
+*/
+#new {
+    margin-top: 5px;
+}
+
+/* Margen de espacio para alinear los iconos en linea */
+.mat-icon {
+    margin-bottom: 5px;
+}
+
+/* Margen de espacio entre el titulo del componente
+    y el toolbar
+*/
+h1 {
+    margin-top: 25px !important;
+    padding-top: 10px !important;
+}

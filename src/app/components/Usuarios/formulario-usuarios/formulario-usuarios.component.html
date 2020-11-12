@@ -1,0 +1,254 @@
+<article>
+    <section class="container">
+        <h1>Nuevo Usuario</h1>
+        <hr>
+
+        <form (ngSubmit)="onSubmit()" [formGroup]="usuariosForms" class="formulario">
+            <mat-accordion>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <h1>
+                                Datos del Usuario
+                            </h1>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                    <mat-divider></mat-divider>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Nombres:</mat-label>
+
+                                    <input matInput formControlName="first_name" placeholder="Nombres de usuario"
+                                        required autocomplete="off" required>
+
+                                    <mat-error *ngIf="usuariosForms.controls.first_name.errors?.required">
+                                        <strong>
+                                            <h3>
+                                                Los nombres son requerido
+                                            </h3>
+                                        </strong>
+                                    </mat-error>
+
+                                    <mat-error *ngIf="usuariosForms.controls.first_name.errors?.minlength">
+                                        <strong>
+                                            <h3>
+                                                El nombre debe de tener minimo 8 caracteres
+                                            </h3>
+                                        </strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Dirección:</mat-label>
+
+                                    <input type="text" matInput formControlName="direccion"
+                                        placeholder="Dirección del usuario" required autocomplete="off">
+
+                                    <mat-error *ngIf="usuariosForms.controls.direccion.errors?.required">
+                                        <strong>
+                                            <h3>
+                                                La dirección es requerida
+                                            </h3>
+                                        </strong>
+                                    </mat-error>
+
+                                    <mat-error *ngIf="usuariosForms.controls.direccion.errors?.minlength">
+                                        <strong>
+                                            <h3>
+                                                La dirección debe de tener minimo 8 caracteres
+                                            </h3>
+                                        </strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Contraseña:</mat-label>
+
+                                    <input matInput formControlName="password" placeholder="Ingrese su contraseña"
+                                        required autocomplete="off" required>
+
+                                    <mat-error *ngIf="usuariosForms.controls.password.errors?.required">
+                                        <strong>
+                                            <h3>
+                                                La contraseña es requerida
+                                            </h3>
+                                        </strong>
+                                    </mat-error>
+
+                                    <mat-error *ngIf="usuariosForms.controls.password.errors?.minlength">
+                                        <strong>
+                                            <h3>
+                                                La contraseña debe de tener minimo 8 caracteres
+                                            </h3>
+                                        </strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Nombre de usuario (Nick):</mat-label>
+
+                                    <input type="text" matInput formControlName="username"
+                                        placeholder="Ingrese el nick de usuario" required autocomplete="off">
+
+                                    <mat-error *ngIf="usuariosForms.controls.username.errors?.required">
+                                        <strong>
+                                            <h3>
+                                                El nombre de usuario es requerido
+                                            </h3>
+                                        </strong>
+                                    </mat-error>
+
+                                    <mat-error *ngIf="usuariosForms.controls.username.errors?.minlength">
+                                        <strong>
+                                            <h3>
+                                                El nombre de usuario debe de tener minimo 8 caracteres
+                                            </h3>
+                                        </strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Activo:</mat-label>
+                                    <mat-select formControlName="estado">
+                                        <ng-container *ngFor="let estado of activo">
+                                            <mat-option [value]="estado.id">{{estado.name}}</mat-option>
+                                        </ng-container>
+                                    </mat-select>
+                                    <mat-error *ngIf="usuariosForms.controls.estado.errors?.required">
+                                        <strong>
+                                            <h3>
+                                                El estado del usuario es requerido
+                                            </h3>
+                                        </strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Apellidos:</mat-label>
+
+                                    <input type="text" matInput formControlName="last_name"
+                                        placeholder="Apellidos del usuario" required autocomplete="off">
+
+                                    <mat-error *ngIf="usuariosForms.controls.last_name.errors?.required">
+                                        <strong>
+                                            <h3>
+                                                Los apellidos son requerido
+                                            </h3>
+                                        </strong>
+                                    </mat-error>
+
+                                    <mat-error *ngIf="usuariosForms.controls.last_name.errors?.minlength">
+                                        <strong>
+                                            <h3>
+                                                El apellido debe de tener minimo 8 caracteres
+                                            </h3>
+                                        </strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Correo electrónico:</mat-label>
+
+                                    <input type="email" matInput formControlName="email"
+                                        placeholder="Correo electrónico" required autocomplete="off">
+
+                                    <mat-error *ngIf="usuariosForms.controls.email.errors?.required">
+                                        <strong>
+                                            <h3>
+                                                El correo electronico es requerido
+                                            </h3>
+                                        </strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Número de teléfono:</mat-label>
+
+                                    <input type="tel" matInput formControlName="telefono"
+                                        placeholder="Ingrese su número telefónico" required autocomplete="off">
+
+                                    <mat-error *ngIf="usuariosForms.controls.telefono.errors?.required">
+                                        <strong>
+                                            <h3>
+                                                El Número de teléfono es requerido
+                                            </h3>
+                                        </strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Tipo de usuario:</mat-label>
+                                    <mat-select formControlName="tipo_usuario">
+                                        <ng-container *ngFor="let tipo_usuario of cargo_usuario">
+                                            <mat-option [value]="tipo_usuario.id">{{tipo_usuario.name}}</mat-option>
+                                        </ng-container>
+                                    </mat-select>
+                                    <mat-error *ngIf="usuariosForms.controls.tipo_usuario.errors?.required">
+                                        <strong>
+                                            <h3>
+                                                El tipo de usuario es requerido
+                                            </h3>
+                                        </strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <h1>
+                                Permisos sobre páginas
+                            </h1>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                    <mat-divider></mat-divider>
+                </mat-expansion-panel>
+            </mat-accordion>
+
+            <div class="row center-xs">
+
+                <div class="mx-auto">
+                    <button mat-raised-button color="primary" type="submit" [disabled]="usuariosForms.invalid"
+                        id="btn_guardar">
+                        Guardar
+                        <i class="material-icons">save</i>
+                    </button>
+                </div>
+
+                <div class="mx-auto">
+                    <button mat-raised-button color="warn" type="button" [routerLink]="['/Usuarios/Listado']"
+                        routerLinkActive="active" id="btn_salir">
+                        Regresar
+                        <i class="material-icons">home</i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+</article>

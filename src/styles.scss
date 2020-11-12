@@ -1,1 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
+
+@import "variables";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/grid"; // sistema de regia
+@import "~bootstrap/scss/utilities"; // utilidades css
+@import "reset";
+
+table {
+    width: 100% !important;
+    margin-top: 25px;
+}
+
+th {
+    background-color: lightgray;
+}
+
+.mat-header-cell {
+    font-size: 15px !important;
+    color: black;
+}
+
+th.mat-header-cell {
+    text-align: justify !important;
+}
+
+body {
+    text-align: justify !important;
+}
+
+.formulario {
+    box-shadow: 0px 0px 10px 1px grey;
+    border-radius: 5px;
+    padding-bottom: 20px;
+    margin-top: 20px;
+}
+
+.row {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}

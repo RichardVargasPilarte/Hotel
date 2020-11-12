@@ -1,0 +1,176 @@
+<article>
+    <section class="container">
+        <h1>
+            {{HabitacionesForms.controls['id'].value?"Modificando Habitación":"Nueva Habitación"}}
+        </h1>
+        <hr>
+
+        <form (ngSubmit)="onSubmit()" [formGroup]="HabitacionesForms" class="formulario">
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Nombre Habitación:</mat-label>
+
+                            <input matInput formControlName="nombre_hab" name="nombre_hab"
+                                placeholder="Nombre de la Habitación" autocomplete="off" required>
+
+                            <mat-error *ngIf="HabitacionesForms.controls.nombre_hab.errors?.required">
+                                <strong>
+                                    <h3>
+                                        El nombre es requerido
+                                    </h3>
+                                </strong>
+                            </mat-error>
+
+                            <mat-error *ngIf="HabitacionesForms.controls.nombre_hab.errors?.minlength">
+                                <strong>
+                                    <h3>
+                                        El nombre debe de tener minimo 8 caracteres
+                                    </h3>
+                                </strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Precio:</mat-label>
+
+                            <input type="number" matInput name="precio" formControlName="precio" placeholder="Precio"
+                                autocomplete="off">
+
+                            <mat-error *ngIf="HabitacionesForms.controls.precio.errors?.required">
+                                <strong>
+                                    <h3>
+                                        El precio es requerido
+                                    </h3>
+                                </strong>
+                            </mat-error>
+
+                            <mat-error *ngIf="HabitacionesForms.controls.precio.errors?.minlength">
+                                <strong>
+                                    <h3>
+                                        El precio debe de tener minimo 2 digitos
+                                    </h3>
+                                </strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+                    <div>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Tipo de Alojamiento</mat-label>
+                            <mat-select formControlName="nombre_al">
+                                <ng-container *ngFor="let alojamiento of AlojamientosCargados">
+                                    <mat-option [value]="alojamiento.id">
+                                        {{alojamiento.nombre_al}}
+                                    </mat-option>
+                                </ng-container>
+                            </mat-select>
+
+                            <mat-error *ngIf="HabitacionesForms.controls.nombre_al.errors?.required">
+                                <strong>
+                                    <h3>
+                                        El tipo de alojamiento es requerido
+                                    </h3>
+                                </strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Número de Personas:</mat-label>
+
+                            <input type="number" matInput name="numero_personas" formControlName="numero_personas"
+                                placeholder="NumeroPersonas" autocomplete="off">
+
+                            <mat-error *ngIf="HabitacionesForms.controls.numero_personas.errors?.required">
+                                <strong>
+                                    <h3>
+                                        El numero de personas es requerido
+                                    </h3>
+                                </strong>
+                            </mat-error>
+
+                            <mat-error *ngIf="HabitacionesForms.controls.numero_personas.errors?.minlength">
+                                <strong>
+                                    <h3>
+                                        El minimo de personas por habitación es de 1 persona
+                                    </h3>
+                                </strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Estado Habitación:</mat-label>
+                            <mat-select formControlName="activo">
+                                <ng-container *ngFor="let estado of EstadoHabitaciones">
+                                    <mat-option [value]="estado">{{estado}}</mat-option>
+                                </ng-container>
+                            </mat-select>
+                            <mat-error *ngIf="HabitacionesForms.controls.activo.errors?.required">
+                                <strong>
+                                    <h3>
+                                        El estado de la habitación es requerida
+                                    </h3>
+                                </strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Descripción:</mat-label>
+                        <textarea matInput cdkTextareaAutosize formControlName="descripcion_hab"
+                            placeholder="Descripción" name="descripcion_hab" #autosize="cdkTextareaAutosize"
+                            autocomplete="off"></textarea>
+
+                        <mat-error *ngIf="HabitacionesForms.controls.descripcion_hab.errors?.required">
+                            <strong>
+                                <h3>
+                                    La descripción es requerida
+                                </h3>
+                            </strong>
+                        </mat-error>
+
+                        <mat-error *ngIf="HabitacionesForms.controls.descripcion_hab.errors?.minlength">
+                            <strong>
+                                <h3>
+                                    La descripción debe de tener minimo 10 caracteres
+                                </h3>
+                            </strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row center-xs">
+                <div class="mx-auto">
+                    <button mat-raised-button color="primary" type="submit" [disabled]="HabitacionesForms.invalid"
+                        id="btn_guardar">
+                        Guardar
+                        <i class="material-icons">save</i>
+                    </button>
+                </div>
+
+                <div class="mx-auto">
+                    <button mat-raised-button color="warn" type="button" [routerLink]="['/Habitaciones/Listado']"
+                        routerLinkActive="active" id="btn_salir">
+                        Regresar
+                        <i class="material-icons">home</i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+</article>
