@@ -54,7 +54,7 @@ const Servicios = [
   AlojamientosService,
   HabitacionesService,
   UsuariosService
-]
+];
 
 @NgModule({
   declarations: [
