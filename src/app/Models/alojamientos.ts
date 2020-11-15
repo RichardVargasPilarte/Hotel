@@ -4,3 +4,4 @@ export class Alojamiento {
     descripcion_al: string;
     tiempo_estadia: number;
 }
+
